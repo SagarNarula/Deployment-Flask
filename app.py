@@ -8,27 +8,6 @@ model = pickle.load(open('model1.pkl', 'rb')) #Load our model pickle File
 def home():
     return render_template('Index.html')
 	
-#app.route('/predict',methods=['POST'])
-# prediction function \
-"""
-def ValuePredictor(to_predict_list): 
-    to_predict = np.array(to_predict_list).reshape(1, 2) 
-    loaded_model = pickle.load(open("model.pkl", "rb")) 
-    result = loaded_model.predict(to_predict) 
-    #output=round(result[0],2)
-    return result[0]
-  
-@app.route('/predict',methods = ['POST']) 
-def predict(): 
-    if request.method == 'POST': 
-        to_predict_list = request.form.to_dict() 
-        to_predict_list = list(to_predict_list.values()) 
-        to_predict_list = list(map(int, to_predict_list)) 
-        result = ValuePredictor(to_predict_list)
-        output=round(int(result[0]),2)
-	    return render_template("Index.html",prediction=Output)
-	"""
-	
 @app.route('/predict',methods=['POST'])
 def predict():
     '''
@@ -40,7 +19,7 @@ def predict():
 
     output = round(prediction[0], 2)
 
-    return render_template('Index.html', prediction_text='Employee Weight should be  {} pounds'.format(output))
+    return render_template('Index.html', prediction_text='User Weight should be  {} pounds'.format(output))
 	
 if __name__ == "__main__":
     app.run(debug=True)
